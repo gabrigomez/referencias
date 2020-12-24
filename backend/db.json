@@ -1,0 +1,34 @@
+{
+  "referencias": [
+    {
+      "authorName": "GOMES, Gabriel",
+      "book": "Como ser durão",
+      "publisher": "Globo",
+      "local": "São Paulo",
+      "year": "2013",
+      "id": 1
+    },
+    {
+      "authorName": "NAVARRO, Letícia",
+      "book": "A fofura",
+      "publisher": "Mística",
+      "local": "São Paulo",
+      "year": "2001",
+      "id": 3
+    }
+  ],
+  "magazines": [
+    {
+      "authorName": "NAVARRO, Letícia",
+      "article": "Revista",
+      "magazine": "Mística",
+      "local": "São Paulo",
+      "volOrYear": "21",
+      "id": 2,
+      "edition": 5,
+      "pages": 10,
+      "mounth": "Agosto",
+      "year": "2001"
+    }
+  ]
+}

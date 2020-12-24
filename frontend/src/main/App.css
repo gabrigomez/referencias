@@ -1,0 +1,40 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.app {
+    margin: 0px;
+    display: grid;
+    
+    grid-template-columns: 1fr;
+    grid-template-rows:
+        100px
+        100px
+        1fr
+        100px;
+    grid-template-areas: 
+        "logo"
+        "header"
+        "content"
+        "footer";
+    
+    height: 100vh;
+    background: linear-gradient(to right, #bbd2c5, #536976);
+}
+
+footer.footer {
+    grid-area: footer;
+}
+
+header.header {
+    grid-area: header;
+}
+
+aside.logo {
+    grid-area: logo
+}
+
+main.content {
+    grid-area: content;
+}

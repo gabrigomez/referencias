@@ -1,0 +1,19 @@
+main.content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to right, #bbd2c5, #536976);
+    
+}
+
+main > div {
+    font-weight: bold;
+     
+}
+
+#main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
