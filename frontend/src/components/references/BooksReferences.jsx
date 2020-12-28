@@ -23,7 +23,7 @@ export default class BooksReferences extends Component {
 
     }
 
-    componentWillMount() {
+    componentDidMount() {
         axios(baseUrl).then(resp => {
             this.setState({ list: resp.data })
         })
@@ -100,7 +100,7 @@ export default class BooksReferences extends Component {
                             <label> Ano</label>
                             <Field type="text" className="form-control" name="year" required/>
 
-                            <button type="submit" className="btn-danger mt-3 mb-3 ml-3 mr-5"
+                            <button type="submit" className="btn-danger mt-3 mb-3 ml-5 "
                             onClick={this.saveAuthorName}>
                                 Salvar
                         </button>
@@ -136,8 +136,7 @@ export default class BooksReferences extends Component {
         return this.state.list.map(book => {
             return (
                 <tr key={book.id}>
-                    <td> <span className="font-weight-bold"> {book.authorName}. </span>
-                        {book.book}. {book.publisher}: {book.local}, {book.year}.
+                    <td> {book.authorName}. <span className="font-weight-bold">{book.book}</span>. {book.publisher}: {book.local}, {book.year}.
                     </td>
                     <td>
                         <button className="bt btn-warning" onClick={() => this.load(book)}>

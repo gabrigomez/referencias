@@ -6,10 +6,21 @@ main.content {
     
 }
 
-main > div {
-    font-weight: bold;
-     
+main > div > div {
+    display: flex;
+    width: 100vh;
+    align-items: center;
+    justify-content: center;
 }
+
+
+
+label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 
 #main {
     display: flex;

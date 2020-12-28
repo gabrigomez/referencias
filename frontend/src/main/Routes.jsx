@@ -1,8 +1,8 @@
 import React from 'react'
 import {Switch, Route, Redirect} from 'react-router'
 import Home from '../components/home/Home'
-import BooksReferences from '../components/books/BooksReferences'
-import MagazinesReferences from '../components/books/MagazineReferences'
+import BooksReferences from '../components/references/BooksReferences'
+import MagazinesReferences from '../components/references/MagazineReferences'
 
 export default props =>
     <Switch>

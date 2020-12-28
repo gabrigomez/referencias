@@ -1,5 +1,4 @@
 aside.logo {
-    /* background-color: white; */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -10,7 +9,7 @@ aside.logo {
 
 aside.logo a {
     text-decoration: none;
-    color: rgba(230, 215, 215, 0.582);    
+    color: rgba(17, 17, 17, 0.582);    
     
 }
 

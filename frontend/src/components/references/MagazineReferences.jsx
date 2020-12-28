@@ -8,7 +8,7 @@ const baseUrl = 'http://localhost:3001/magazines'
 
 const initialState = {
     magazines: { authorName: '', article: '', magazine:'', local: '', volOrYear: '', 
-        edition: '', pages: '', mounth: '', year: '' },
+        edition: '', pages: '', date: '' },
     list: []
 }
 
@@ -24,7 +24,7 @@ export default class MagazinesReferences extends Component {
     }
     
 
-    componentWillMount() {
+    componentDidMount() {
         axios(baseUrl).then(resp => {
             this.setState( { list: resp.data })
         })
@@ -87,7 +87,7 @@ export default class MagazinesReferences extends Component {
             <div>
                 <Formik initialValues={{
                     authorName: '', article: '', magazine: '', local: '', volOrYear: '',
-                    edition: '', pages: '', mounth: '', year: ''
+                    edition: '', pages: '', date: ''
                 }}
                     onSubmit={(values, actions) => {
                         this.setState({magazines: values})
@@ -112,12 +112,10 @@ export default class MagazinesReferences extends Component {
                             <Field type="text" className="form-control" name="edition" required/>
                             <label> Páginas</label>
                             <Field type="text" className="form-control" name="pages" required/>
-                            <label> Mês de Publicação</label>
-                            <Field type="text" className="form-control" name="mounth" required/>
-                            <label> Ano de Publicação</label>
-                            <Field type="text" className="form-control" name="year" required/>
+                            <label> Data da Publicação</label>
+                            <Field type="text" className="form-control" name="date" required/>
 
-                            <button type="submit" className="btn-danger mt-3 mb-3 ml-3 mr-5"
+                            <button type="submit" className="btn-danger mt-3 mb-3 ml-5"
                             onClick={this.saveAuthorName}>
                                 Salvar
                         </button>
@@ -152,12 +150,11 @@ export default class MagazinesReferences extends Component {
         return this.state.list.map(magazine => {
             return (
                 <tr key={magazine.id}>
-                    <td> <span className="font-weight-bold"> {magazine.authorName}. </span>
-                        {magazine.article}. {magazine.magazine}: {magazine.local}, {magazine.volOrYear}.
-                        {magazine.pages}, {magazine.mounth}, {magazine.year}
+                    <td> {magazine.authorName}. {magazine.article}.
+                    <span className="font-weight-bold"> {magazine.magazine}</span>, {magazine.local}, {magazine.volOrYear}, {magazine.edition}, {magazine.pages}, {magazine.date}.
                     </td>
                     <td>
-                        <button className="bt btn-warning" onClick={() => this.load(magazine)}>
+                        <button className="bt btn-warning mr-1" onClick={() => this.load(magazine)}>
                             <i className="fa fa-pencil"></i>
                         </button>
                         <button className="bt btn-danger" onClick={() => this.remove(magazine)}>
