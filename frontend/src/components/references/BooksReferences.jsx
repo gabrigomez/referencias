@@ -29,9 +29,7 @@ export default class BooksReferences extends Component {
         })
     }
 
-    save() {        
-        
-        const book = this.state.books
+    save(book) {
         const method = book.id ? 'put' : 'post'
         const url = book.id ? `${baseUrl}/${book.id}` : baseUrl
 
@@ -48,26 +46,21 @@ export default class BooksReferences extends Component {
         return list
     }
 
-    saveAuthorName() {
-        const book = this.state.books
+    saveAuthorName(book) {
         const name = book.authorName
 
         const arrayName = name.split(' ')
         const authorLastName = arrayName.pop().toUpperCase()
         const authorNewName = arrayName.slice([0, [arrayName.length - 1]]).join(' ')
 
-        book.authorName = (authorLastName) + ', ' + (authorNewName)
-        this.setState({ books: book.authorName })
-        this.save()
-        console.log(this.state.books)
-        
+        book.authorName = (authorLastName) + ', ' + (authorNewName);
+        this.setState({ books: book.authorName });
+        this.save(book);
     }
 
     load(book) {
         this.setState({ book })
     }
-
-
 
     remove(book) {
         axios.delete(`${baseUrl}/${book.id}`).then(resp => {
@@ -77,13 +70,13 @@ export default class BooksReferences extends Component {
     }
 
     renderForm() {
-        
         return (
             <div>
-                <Formik initialValues={{ authorName: '', book: '', publisher: '', local: '', year: '' }}
+                <Formik initialValues={initialState.books}
                     onSubmit={(values, actions) => {
-                        this.setState({books: values})
-                        
+                        this.setState({ books: values })
+                        this.saveAuthorName(values);
+                        actions.resetForm();                        
                         //tentar passar os values gerados do formik para o state
                 }}
                 >
@@ -100,10 +93,9 @@ export default class BooksReferences extends Component {
                             <label> Ano</label>
                             <Field type="text" className="form-control" name="year" required/>
 
-                            <button type="submit" className="btn-danger mt-3 mb-3 ml-5 "
-                            onClick={this.saveAuthorName}>
+                            <button type="submit" className="btn-danger mt-3 mb-3 ml-5">
                                 Salvar
-                        </button>
+                            </button>
                             <button className="btn-danger mt-3 mb-3 ml-3 mr-5"
                                 onClick={props.handleReset}>
                                 Cancelar
