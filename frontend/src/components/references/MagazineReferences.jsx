@@ -30,9 +30,7 @@ export default class MagazinesReferences extends Component {
         })
     }
 
-    save() {        
-
-        const magazine = this.state.magazines
+    save(magazine) {        
         const method = magazine.id ? 'put' : 'post'
         const url = magazine.id ? `${baseUrl}/${magazine.id}` : baseUrl
 
@@ -51,7 +49,6 @@ export default class MagazinesReferences extends Component {
     }
 
     saveAuthorName() {
-        
         const magazine = this.state.magazines
         const name = magazine.authorName
 
@@ -60,14 +57,10 @@ export default class MagazinesReferences extends Component {
         const authorNewName = arrayName.slice([0, [arrayName.length - 1]]).join(' ')
 
         magazine.authorName = (authorLastName) + ', ' + (authorNewName)
-        this.setState({ magazines: magazine.authorName })
-        
-        this.save()
-        
-        
+        this.setState({ magazines: magazine })
+
+        this.save(magazine)
     }
-
-
 
     load(magazine) {
         this.setState({ magazine })
@@ -85,14 +78,11 @@ export default class MagazinesReferences extends Component {
         
         return (
             <div>
-                <Formik initialValues={{
-                    authorName: '', article: '', magazine: '', local: '', volOrYear: '',
-                    edition: '', pages: '', date: ''
-                }}
+                <Formik initialValues={initialState.magazines}
                     onSubmit={(values, actions) => {
-                        this.setState({magazines: values})
-                        
-                        
+                        this.setState({ magazines: values })
+                        this.saveAuthorName(values);
+                        actions.resetForm();                        
                         //tentar passar os values gerados do formik para o state
                 }}
                 >
@@ -115,10 +105,9 @@ export default class MagazinesReferences extends Component {
                             <label> Data da Publicação</label>
                             <Field type="text" className="form-control" name="date" required/>
 
-                            <button type="submit" className="btn-danger mt-3 mb-3 ml-5"
-                            onClick={this.saveAuthorName}>
+                            <button type="submit" className="btn-danger mt-3 mb-3 ml-5">
                                 Salvar
-                        </button>
+                            </button>
                             <button className="btn-danger mt-3 mb-3 ml-3 mr-5"
                                 onClick={props.handleReset}>
                                 Cancelar
