@@ -105,7 +105,7 @@ export default class MagazinesReferences extends Component {
                             <label> Data da Publicação</label>
                             <Field type="text" className="form-control" name="date" required/>
 
-                            <button type="submit" className="btn-danger mt-3 mb-3 ml-5">
+                            <button type="submit" className="btn-primary mt-3 mb-3 ml-5">
                                 Salvar
                             </button>
                             <button className="btn-danger mt-3 mb-3 ml-3 mr-5"
