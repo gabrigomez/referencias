@@ -78,7 +78,29 @@ export default class BooksReferences extends Component {
             authorName: yup
                 .string()
                 .min(2)
-                .required('Required')
+                .max(50)
+                .required('Nome do Autor obrigatório'),
+            book: yup
+                .string()
+                .min(2)
+                .max(50)
+                .required('Nome da Obra obrigatório'),
+            publisher: yup
+                .string()
+                .min(2)
+                .max(50)
+                .required('Nome da Editora obrigatório'),
+            local: yup
+                .string()
+                .min(3)
+                .max(50)
+                .required('Local da publicação obrigatório'),
+            year: yup
+                .string()
+                .length(4, 'O ano deve conter 4 dígitos')
+                .required('Ano de publicação obrigatório')
+                .min(4)
+                .max(5)
         })
         
         return (
@@ -90,7 +112,7 @@ export default class BooksReferences extends Component {
                         this.saveAuthorName(values);
                         actions.resetForm();
                         console.log(actions)                                              
-                        //tentar passar os values gerados do formik para o state
+                        
                 }}
                 >
                     {props =>
@@ -98,16 +120,32 @@ export default class BooksReferences extends Component {
                             <label> Nome do Autor</label>
                             <Field type="text" className="form-control" name="authorName" />
                             {props.errors.authorName && props.touched.authorName ? (
-                                <div>{props.errors.authorName}</div>
-                            ):null }
+                                <div className="text-danger mt-1">{props.errors.authorName}</div>
+                            ) : null}
+
                             <label> Livro</label>
-                            <Field type="text" className="form-control" name="book" required/>
+                            <Field type="text" className="form-control" name="book" required />
+                            {props.errors.book && props.touched.book ? (
+                                <div className="text-danger mb-2">{props.errors.book}</div>
+                            ) : null}
+
                             <label> Editora</label>
                             <Field type="text" className="form-control" name="publisher" required />
+                            {props.errors.publisher && props.touched.publisher ? (
+                                <div className="text-danger mb-2">{props.errors.publisher}</div>
+                            ) : null}
+
                             <label> Local</label>
-                            <Field type="text" className="form-control" name="local" required/>
+                            <Field type="text" className="form-control" name="local" required />
+                            {props.errors.local && props.touched.local ? (
+                                <div className="text-danger mb-2">{props.errors.local}</div>
+                            ) : null}
+
                             <label> Ano</label>
-                            <Field type="text" className="form-control" name="year" required/>
+                            <Field type="text" className="form-control" name="year" required />
+                            {props.errors.year && props.touched.year ? (
+                                <div className="text-danger mb-2">{props.errors.year}</div>
+                            ) : null}
 
                             <button type="submit" className="btn-primary mt-3 mb-3 ml-5">
                                 Salvar

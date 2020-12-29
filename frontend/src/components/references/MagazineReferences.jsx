@@ -3,6 +3,7 @@ import Main from '../../components/template/Main'
 import axios from 'axios'
 import './MagazineReferences.css'
 import { Formik, Field, Form } from 'formik'
+import * as yup from 'yup'
 
 const baseUrl = 'http://localhost:3001/magazines'
 
@@ -75,10 +76,53 @@ export default class MagazinesReferences extends Component {
     }
 
     renderForm() {
-        
+        const magazineSchemas = yup.object().shape({
+            authorName: yup
+                .string()
+                .min(2)
+                .max(50)
+                .required('Nome do Autor obrigatório'),
+            article: yup
+                .string()
+                .min(2)
+                .max(50)
+                .required('Nome do Trabalho é obrigatório'),
+            magazine: yup
+                .string()
+                .min(2)
+                .max(50)
+                .required('Nome da Revista é obrigatório'),
+            local: yup
+                .string()
+                .min(2)
+                .max(50)
+                .required('Nome do local é obrigatório'),
+            volOrYear: yup
+                .string()
+                .min(2)
+                .max(8)
+                .required('Ano/volume é obrigatório'),
+            edition: yup
+                .string()
+                .min(2)
+                .max(5)
+                .required('Nº de edição obrigatório'),
+            pages: yup
+                .number()
+                .min(2)
+                .max(13)
+                .required('Nº de páginas obrigatório'),
+            date: yup
+                .string()
+                .required('Data de publicação obrigatório')
+                .min(8)
+                .max(25)
+
+        })
         return (
             <div>
                 <Formik initialValues={initialState.magazines}
+                    validationSchema={magazineSchemas}
                     onSubmit={(values, actions) => {
                         this.setState({ magazines: values })
                         this.saveAuthorName(values);
@@ -90,20 +134,51 @@ export default class MagazinesReferences extends Component {
                         <Form className="form-group mr-5"  >
                             <label> Nome do Autor</label>
                             <Field type="text" className="form-control" name="authorName" required/>
+                            {props.errors.authorName && props.touched.authorName ? (
+                                <div className="text-danger mt-1">{props.errors.authorName}</div>
+                            ) : null}
+
                             <label> Nome do Artigo</label>
                             <Field type="text" className="form-control" name="article" required/>
+                            {props.errors.article && props.touched.article ? (
+                                <div className="text-danger mt-1">{props.errors.article}</div>
+                            ) : null}
+                            
                             <label> Nome da Revista</label>
                             <Field type="text" className="form-control" name="magazine" required />
+                            {props.errors.magazine && props.touched.magazine ? (
+                                <div className="text-danger mt-1">{props.errors.magazine}</div>
+                            ) : null}
+                            
                             <label> Local</label>
                             <Field type="text" className="form-control" name="local" required/>
+                            {props.errors.local && props.touched.local ? (
+                                <div className="text-danger mt-1">{props.errors.local}</div>
+                            ) : null}
+                            
                             <label> Volume/Ano da Revista</label>
                             <Field type="text" className="form-control" name="volOrYear" required/>
+                            {props.errors.volOrYear && props.touched.volOrYear ? (
+                                <div className="text-danger mt-1">{props.errors.volOrYear}</div>
+                            ) : null}
+                            
                             <label> Número da Edição</label>
                             <Field type="text" className="form-control" name="edition" required/>
+                            {props.errors.edition && props.touched.edition ? (
+                                <div className="text-danger mt-1">{props.errors.edition}</div>
+                            ) : null}
+                            
                             <label> Páginas</label>
                             <Field type="text" className="form-control" name="pages" required/>
+                            {props.errors.pages && props.touched.pages ? (
+                                <div className="text-danger mt-1">{props.errors.pages}</div>
+                            ) : null}
+                            
                             <label> Data da Publicação</label>
                             <Field type="text" className="form-control" name="date" required/>
+                            {props.errors.date && props.touched.date ? (
+                                <div className="text-danger mt-1">{props.errors.date}</div>
+                            ) : null}
 
                             <button type="submit" className="btn-primary mt-3 mb-3 ml-5">
                                 Salvar
