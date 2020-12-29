@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import Main from '../../components/template/Main'
 import axios from 'axios'
 import './BooksReferences.css'
-import { Formik, Field, Form } from 'formik'
+import { Formik, Field, Form, ErrorMessage } from 'formik'
+import * as yup from 'yup'
 
 
 const baseUrl = 'http://localhost:3001/books'
@@ -73,9 +74,17 @@ export default class BooksReferences extends Component {
     }
 
     renderForm() {
+        const booksSchemas = yup.object().shape({
+            authorName: yup
+                .string()
+                .min(2)
+                .required('Required')
+        })
+        
         return (
             <div>
                 <Formik initialValues={initialState.books}
+                    validationSchema={booksSchemas}
                     onSubmit={(values, actions) => {
                         this.setState({ books: values })
                         this.saveAuthorName(values);
@@ -84,10 +93,13 @@ export default class BooksReferences extends Component {
                         //tentar passar os values gerados do formik para o state
                 }}
                 >
-                    {props => (
+                    {props =>
                         <Form className="form-group mr-5"  >
                             <label> Nome do Autor</label>
-                            <Field type="text" className="form-control" name="authorName" required/>
+                            <Field type="text" className="form-control" name="authorName" />
+                            {props.errors.authorName && props.touched.authorName ? (
+                                <div>{props.errors.authorName}</div>
+                            ):null }
                             <label> Livro</label>
                             <Field type="text" className="form-control" name="book" required/>
                             <label> Editora</label>
@@ -105,7 +117,8 @@ export default class BooksReferences extends Component {
                                 Cancelar
                         </button>
                         </Form>
-                    )}
+                        
+                    }
                 </Formik>
             </div>
         )
