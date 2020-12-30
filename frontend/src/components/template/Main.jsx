@@ -1,8 +1,8 @@
 import './Main.css'
-import React, { Children } from 'react'
+import React from 'react'
 import Header from './Header'
 
-
+// eslint-disable-next-line
 export default props => 
     <React.Fragment>
         <Header />

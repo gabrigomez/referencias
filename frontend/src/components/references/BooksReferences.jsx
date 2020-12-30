@@ -2,9 +2,11 @@ import React, { Component } from 'react'
 import Main from '../../components/template/Main'
 import axios from 'axios'
 import './BooksReferences.css'
-import { Formik, Field, Form, ErrorMessage } from 'formik'
+import { Formik, Field, Form} from 'formik'
 import * as yup from 'yup'
 
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.min.css'; 
 
 const baseUrl = 'http://localhost:3001/books'
 
@@ -72,6 +74,8 @@ export default class BooksReferences extends Component {
             this.setState({ list })
         })
     }
+    
+    toastedSuccess = () => toast.success('Referência gerada com sucesso!')
 
     renderForm() {
         const booksSchemas = yup.object().shape({
@@ -110,6 +114,7 @@ export default class BooksReferences extends Component {
                     onSubmit={(values, actions) => {
                         this.setState({ books: values })
                         this.saveAuthorName(values);
+                        this.toastedSuccess();
                         actions.resetForm();
                         console.log(actions)                                              
                         
@@ -153,7 +158,8 @@ export default class BooksReferences extends Component {
                             <button className="btn-danger mt-3 mb-3 ml-3 mr-5"
                                 onClick={props.handleReset}>
                                 Cancelar
-                        </button>
+                            </button>
+                        <ToastContainer />
                         </Form>
                         
                     }

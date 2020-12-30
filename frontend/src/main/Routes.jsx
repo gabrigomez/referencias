@@ -4,6 +4,7 @@ import Home from '../components/home/Home'
 import BooksReferences from '../components/references/BooksReferences'
 import MagazinesReferences from '../components/references/MagazineReferences'
 
+// eslint-disable-next-line
 export default props =>
     <Switch>
         <Route exact path='/' component={Home}  /> 

@@ -5,6 +5,9 @@ import './MagazineReferences.css'
 import { Formik, Field, Form } from 'formik'
 import * as yup from 'yup'
 
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.min.css'; 
+
 const baseUrl = 'http://localhost:3001/magazines'
 
 const initialState = {
@@ -75,6 +78,8 @@ export default class MagazinesReferences extends Component {
         })
     }
 
+    toastedSuccess = () => toast.success('Referência gerada com sucesso!')
+
     renderForm() {
         const magazineSchemas = yup.object().shape({
             authorName: yup
@@ -108,7 +113,7 @@ export default class MagazinesReferences extends Component {
                 .max(5)
                 .required('Nº de edição obrigatório'),
             pages: yup
-                .number()
+                .string()
                 .min(2)
                 .max(13)
                 .required('Nº de páginas obrigatório'),
@@ -126,56 +131,56 @@ export default class MagazinesReferences extends Component {
                     onSubmit={(values, actions) => {
                         this.setState({ magazines: values })
                         this.saveAuthorName(values);
-                        actions.resetForm();                        
-                        //tentar passar os values gerados do formik para o state
-                }}
+                        actions.resetForm();
+                        this.toastedSuccess();
+                    }}
                 >
                     {props => (
                         <Form className="form-group mr-5"  >
                             <label> Nome do Autor</label>
-                            <Field type="text" className="form-control" name="authorName" required/>
+                            <Field type="text" className="form-control" name="authorName" required />
                             {props.errors.authorName && props.touched.authorName ? (
                                 <div className="text-danger mt-1">{props.errors.authorName}</div>
                             ) : null}
 
                             <label> Nome do Artigo</label>
-                            <Field type="text" className="form-control" name="article" required/>
+                            <Field type="text" className="form-control" name="article" required />
                             {props.errors.article && props.touched.article ? (
                                 <div className="text-danger mt-1">{props.errors.article}</div>
                             ) : null}
-                            
+
                             <label> Nome da Revista</label>
                             <Field type="text" className="form-control" name="magazine" required />
                             {props.errors.magazine && props.touched.magazine ? (
                                 <div className="text-danger mt-1">{props.errors.magazine}</div>
                             ) : null}
-                            
+
                             <label> Local</label>
-                            <Field type="text" className="form-control" name="local" required/>
+                            <Field type="text" className="form-control" name="local" required />
                             {props.errors.local && props.touched.local ? (
                                 <div className="text-danger mt-1">{props.errors.local}</div>
                             ) : null}
-                            
+
                             <label> Volume/Ano da Revista</label>
-                            <Field type="text" className="form-control" name="volOrYear" required/>
+                            <Field type="text" className="form-control" name="volOrYear" required />
                             {props.errors.volOrYear && props.touched.volOrYear ? (
                                 <div className="text-danger mt-1">{props.errors.volOrYear}</div>
                             ) : null}
-                            
+
                             <label> Número da Edição</label>
-                            <Field type="text" className="form-control" name="edition" required/>
+                            <Field type="text" className="form-control" name="edition" required />
                             {props.errors.edition && props.touched.edition ? (
                                 <div className="text-danger mt-1">{props.errors.edition}</div>
                             ) : null}
-                            
+
                             <label> Páginas</label>
-                            <Field type="text" className="form-control" name="pages" required/>
+                            <Field type="text" className="form-control" name="pages" required />
                             {props.errors.pages && props.touched.pages ? (
                                 <div className="text-danger mt-1">{props.errors.pages}</div>
                             ) : null}
-                            
+
                             <label> Data da Publicação</label>
-                            <Field type="text" className="form-control" name="date" required/>
+                            <Field type="text" className="form-control" name="date" required />
                             {props.errors.date && props.touched.date ? (
                                 <div className="text-danger mt-1">{props.errors.date}</div>
                             ) : null}
@@ -186,7 +191,8 @@ export default class MagazinesReferences extends Component {
                             <button className="btn-danger mt-3 mb-3 ml-3 mr-5"
                                 onClick={props.handleReset}>
                                 Cancelar
-                        </button>
+                            </button>
+                            <ToastContainer />
                         </Form>
                     )}
                 </Formik>

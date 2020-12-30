@@ -1,7 +1,7 @@
 import React from 'react'
 import Main from '../../components/template/Main'
 
-
+// eslint-disable-next-line
 export default props =>
     <Main>
         <h5>
