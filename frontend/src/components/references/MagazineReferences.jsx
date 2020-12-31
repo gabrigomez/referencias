@@ -137,52 +137,52 @@ export default class MagazinesReferences extends Component {
                 >
                     {props => (
                         <Form className="form-group mr-5"  >
-                            <label> Nome do Autor</label>
-                            <Field type="text" className="form-control" name="authorName" required />
+                            <label className="mb-2"> <b> Nome do Autor</b> </label>
+                            <Field type="text" className="form-control" name="authorName" placeholder="ex: Antonio Candido" required />
                             {props.errors.authorName && props.touched.authorName ? (
-                                <div className="text-danger mt-1">{props.errors.authorName}</div>
+                                <div id="error" className="text-danger mt-1">{props.errors.authorName}</div>
                             ) : null}
 
-                            <label> Nome do Artigo</label>
-                            <Field type="text" className="form-control" name="article" required />
+                            <label className="mt-2"> <b> Nome do Artigo </b></label>
+                            <Field type="text" className="form-control" name="article" placeholder="ex: Literatura e Subdesenvolvimento" required />
                             {props.errors.article && props.touched.article ? (
-                                <div className="text-danger mt-1">{props.errors.article}</div>
+                                <div id="error" className="text-danger mt-1">{props.errors.article}</div>
                             ) : null}
 
-                            <label> Nome da Revista</label>
-                            <Field type="text" className="form-control" name="magazine" required />
+                            <label className="mt-2"> <b> Nome da Revista </b></label>
+                            <Field type="text" className="form-control" name="magazine" placeholder="ex: Lancet" required />
                             {props.errors.magazine && props.touched.magazine ? (
-                                <div className="text-danger mt-1">{props.errors.magazine}</div>
+                                <div id="error" className="text-danger mt-1">{props.errors.magazine}</div>
                             ) : null}
 
-                            <label> Local</label>
-                            <Field type="text" className="form-control" name="local" required />
+                            <label className="mt-2"> <b> Local </b></label>
+                            <Field type="text" className="form-control" name="local" placeholder="ex: Brasília" required />
                             {props.errors.local && props.touched.local ? (
-                                <div className="text-danger mt-1">{props.errors.local}</div>
+                                <div id="error" className="text-danger mt-1">{props.errors.local}</div>
                             ) : null}
 
-                            <label> Volume/Ano da Revista</label>
-                            <Field type="text" className="form-control" name="volOrYear" required />
+                            <label className="mt-2"> <b> Volume/Ano da Revista </b></label>
+                            <Field type="text" className="form-control" name="volOrYear" placeholder="ex: v. 3" required />
                             {props.errors.volOrYear && props.touched.volOrYear ? (
-                                <div className="text-danger mt-1">{props.errors.volOrYear}</div>
+                                <div id="error" className="text-danger mt-1">{props.errors.volOrYear}</div>
                             ) : null}
 
-                            <label> Número da Edição</label>
-                            <Field type="text" className="form-control" name="edition" required />
+                            <label className="mt-2"> <b> Número da Edição </b></label>
+                            <Field type="text" className="form-control" name="edition" placeholder="ex: n. 18" required />
                             {props.errors.edition && props.touched.edition ? (
-                                <div className="text-danger mt-1">{props.errors.edition}</div>
+                                <div id="error" className="text-danger mt-1">{props.errors.edition}</div>
                             ) : null}
 
-                            <label> Páginas</label>
-                            <Field type="text" className="form-control" name="pages" required />
+                            <label className="mt-2"> <b> Páginas </b></label>
+                            <Field type="text" className="form-control" name="pages" placeholder="ex: p. 25-28" required />
                             {props.errors.pages && props.touched.pages ? (
-                                <div className="text-danger mt-1">{props.errors.pages}</div>
+                                <div id="error" className="text-danger mt-1">{props.errors.pages}</div>
                             ) : null}
 
-                            <label> Data da Publicação</label>
-                            <Field type="text" className="form-control" name="date" required />
+                            <label className="mt-2"> <b> Data da Publicação </b></label>
+                            <Field type="text" className="form-control" name="date" placeholder="ex: 15 mar. 2010" required />
                             {props.errors.date && props.touched.date ? (
-                                <div className="text-danger mt-1">{props.errors.date}</div>
+                                <div id="error" className="text-danger mt-1">{props.errors.date}</div>
                             ) : null}
 
                             <button type="submit" className="btn-primary mt-3 mb-3 ml-5">

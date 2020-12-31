@@ -122,34 +122,34 @@ export default class BooksReferences extends Component {
                 >
                     {props =>
                         <Form className="form-group mr-5"  >
-                            <label> Nome do Autor</label>
-                            <Field type="text" className="form-control" name="authorName" />
+                            <label className="mt-2"><b> Nome do Autor </b></label>
+                            <Field type="text" className="form-control" name="authorName" placeholder="ex: Paulo Freire" required/>
                             {props.errors.authorName && props.touched.authorName ? (
-                                <div className="text-danger mt-1">{props.errors.authorName}</div>
+                                <div id="error" className="text-danger mt-1">{props.errors.authorName}</div>
                             ) : null}
 
-                            <label> Livro</label>
-                            <Field type="text" className="form-control" name="book" required />
+                            <label className="mt-2"><b> Livro </b></label>
+                            <Field type="text" className="form-control" name="book" placeholder="ex: Pedagogia do Oprimido" required />
                             {props.errors.book && props.touched.book ? (
-                                <div className="text-danger mb-2">{props.errors.book}</div>
+                                <div id="error" className="text-danger mb-2">{props.errors.book}</div>
                             ) : null}
 
-                            <label> Editora</label>
-                            <Field type="text" className="form-control" name="publisher" required />
+                            <label className="mt-2"><b> Editora </b></label>
+                            <Field type="text" className="form-control" name="publisher" placeholder="ex: Companhia das Letras" required />
                             {props.errors.publisher && props.touched.publisher ? (
-                                <div className="text-danger mb-2">{props.errors.publisher}</div>
+                                <div id="error" className="text-danger mb-2">{props.errors.publisher}</div>
                             ) : null}
 
-                            <label> Local</label>
-                            <Field type="text" className="form-control" name="local" required />
+                            <label className="mt-2"><b> Local </b></label>
+                            <Field type="text" className="form-control" name="local" placeholder="ex: São Paulo" required />
                             {props.errors.local && props.touched.local ? (
-                                <div className="text-danger mb-2">{props.errors.local}</div>
+                                <div id="error" className="text-danger mb-2">{props.errors.local}</div>
                             ) : null}
 
-                            <label> Ano</label>
-                            <Field type="text" className="form-control" name="year" required />
+                            <label className="mt-2"><b> Ano </b></label>
+                            <Field type="text" className="form-control" name="year" placeholder="ex: 1998" required />
                             {props.errors.year && props.touched.year ? (
-                                <div className="text-danger mb-2">{props.errors.year}</div>
+                                <div id="error" className="text-danger mb-2">{props.errors.year}</div>
                             ) : null}
 
                             <button type="submit" className="btn-primary mt-3 mb-3 ml-5">
