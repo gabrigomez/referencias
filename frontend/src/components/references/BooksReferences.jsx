@@ -62,10 +62,7 @@ export default class BooksReferences extends Component {
     }
 
     load(book) {
-        this.setState({ books: book })
-        console.log(book)
-        console.log(this.state)        
-              
+        this.setState({ books: book })            
     }
 
     remove(book) {
@@ -115,8 +112,7 @@ export default class BooksReferences extends Component {
                         this.setState({ books: values })
                         this.saveAuthorName(values);
                         this.toastedSuccess();
-                        actions.resetForm();
-                        console.log(actions)                                              
+                        actions.resetForm();                                                                    
                         
                 }}
                 >
@@ -193,7 +189,7 @@ export default class BooksReferences extends Component {
                         <td> {book.authorName}. <span className="font-weight-bold">{book.book}</span>. {book.publisher}: {book.local}, {book.year}.
                     </td>
                         <td>
-                            <button className="bt btn-warning" onClick={() => this.load(book)}>
+                            <button className="bt btn-warning mr-1" onClick={() => this.load(book)}>
                                 <i className="fa fa-pencil"></i>
                             </button>
                             <button className="bt btn-danger" onClick={() => this.remove(book)}>
