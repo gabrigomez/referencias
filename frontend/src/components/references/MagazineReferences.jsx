@@ -8,6 +8,9 @@ import * as yup from 'yup'
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css'; 
 
+
+import Button from '@material-ui/core/Button';
+
 const baseUrl = 'http://localhost:3001/magazines'
 
 const initialState = {
@@ -66,10 +69,9 @@ export default class MagazinesReferences extends Component {
         this.save(magazine)
     }
 
-    load(magazine) {
-        this.setState({ magazine })
-        
-    }
+    // load(magazine) {
+    //     this.setState({ magazine })        
+    // }
 
     remove(magazine) {
         axios.delete(`${baseUrl}/${magazine.id}`).then(resp => {
@@ -224,12 +226,12 @@ export default class MagazinesReferences extends Component {
                     <span className="font-weight-bold"> {magazine.magazine}</span>, {magazine.local}, {magazine.volOrYear}, {magazine.edition}, {magazine.pages}, {magazine.date}.
                     </td>
                     <td>
-                        <button className="bt btn-warning mr-1" onClick={() => this.load(magazine)}>
+                        {/* <button className="bt btn-warning mr-1" onClick={() => this.load(magazine)}>
                             <i className="fa fa-pencil"></i>
-                        </button>
-                        <button className="bt btn-danger" onClick={() => this.remove(magazine)}>
+                        </button> */}
+                        <Button variant="contained" color="secondary" onClick={() => this.remove(magazine)}>
                             <i className="fa fa-trash"></i>
-                        </button>
+                        </Button>
                     </td>
                 </tr>
             )

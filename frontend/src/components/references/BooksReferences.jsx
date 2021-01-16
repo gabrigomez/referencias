@@ -8,7 +8,12 @@ import * as yup from 'yup'
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css'; 
 
+
+import Button from '@material-ui/core/Button';
+
+
 const baseUrl = 'http://localhost:3001/books'
+
 
 const initialState = {
     books: { authorName: '', book: '', publisher: '', local: '', year: '' },
@@ -61,9 +66,9 @@ export default class BooksReferences extends Component {
         this.save(book);
     }
 
-    load(book) {
-        this.setState({ books: book })            
-    }
+    // load(book) {
+    //     this.setState({ books: book })            
+    // }
 
     remove(book) {
         axios.delete(`${baseUrl}/${book.id}`).then(resp => {
@@ -151,7 +156,7 @@ export default class BooksReferences extends Component {
                             <button type="submit" className="btn-primary mt-3 mb-3 ml-5">
                                 Salvar
                             </button>
-                            <button className="btn-danger mt-3 mb-3 ml-3 mr-5"
+                            <button className="btn-danger mt-3 mb-3 ml-3 mr-5" 
                                 onClick={props.handleReset}>
                                 Cancelar
                             </button>
@@ -189,12 +194,12 @@ export default class BooksReferences extends Component {
                         <td> {book.authorName}. <span className="font-weight-bold">{book.book}</span>. {book.publisher}: {book.local}, {book.year}.
                     </td>
                         <td>
-                            <button className="bt btn-warning mr-1" onClick={() => this.load(book)}>
+                            {/* <button className="bt btn-warning mr-1" onClick={() => this.load(book)}>
                                 <i className="fa fa-pencil"></i>
-                            </button>
-                            <button className="bt btn-danger" onClick={() => this.remove(book)}>
+                            </button> */}
+                            <Button variant="contained" color="secondary" onClick={() => this.remove(book)}>
                                 <i className="fa fa-trash"></i>
-                            </button>
+                            </Button>
                         </td>
                     </tr>
 

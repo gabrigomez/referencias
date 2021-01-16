@@ -5,3 +5,10 @@ footer.footer {
     background-color: rgba(128, 128, 128, 0.466);
     padding: 25px;
 }
+
+p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.7rem;
+}
