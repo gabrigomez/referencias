@@ -69,10 +69,6 @@ export default class MagazinesReferences extends Component {
         this.save(magazine)
     }
 
-    // load(magazine) {
-    //     this.setState({ magazine })        
-    // }
-
     remove(magazine) {
         axios.delete(`${baseUrl}/${magazine.id}`).then(resp => {
             const list = this.state.list.filter(b => b !== magazine)
@@ -187,13 +183,13 @@ export default class MagazinesReferences extends Component {
                                 <div id="error" className="text-danger mt-1">{props.errors.date}</div>
                             ) : null}
 
-                            <button type="submit" className="btn-primary mt-3 mb-3 ml-5">
+                            <Button id="buttonConfig2" variant="contained" type="submit" color="primary">
                                 Salvar
-                            </button>
-                            <button className="btn-danger mt-3 mb-3 ml-3 mr-5"
+                            </Button>
+                            <Button id="buttonConfig" variant="contained" color="secondary"
                                 onClick={props.handleReset}>
                                 Cancelar
-                            </button>
+                            </Button>
                             <ToastContainer />
                         </Form>
                     )}
@@ -226,9 +222,6 @@ export default class MagazinesReferences extends Component {
                     <span className="font-weight-bold"> {magazine.magazine}</span>, {magazine.local}, {magazine.volOrYear}, {magazine.edition}, {magazine.pages}, {magazine.date}.
                     </td>
                     <td>
-                        {/* <button className="bt btn-warning mr-1" onClick={() => this.load(magazine)}>
-                            <i className="fa fa-pencil"></i>
-                        </button> */}
                         <Button variant="contained" color="secondary" onClick={() => this.remove(magazine)}>
                             <i className="fa fa-trash"></i>
                         </Button>

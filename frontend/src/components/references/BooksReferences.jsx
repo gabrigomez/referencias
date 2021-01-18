@@ -66,10 +66,6 @@ export default class BooksReferences extends Component {
         this.save(book);
     }
 
-    // load(book) {
-    //     this.setState({ books: book })            
-    // }
-
     remove(book) {
         axios.delete(`${baseUrl}/${book.id}`).then(resp => {
             const list = this.state.list.filter(b => b !== book)
@@ -154,10 +150,10 @@ export default class BooksReferences extends Component {
                                 <div id="error" className="text-danger mb-2">{props.errors.year}</div>
                             ) : null}
 
-                            <Button variant="contained" type="submit" color="primary">
+                            <Button id="buttonConfig2" variant="contained" type="submit" color="primary">
                                 Salvar
                             </Button>
-                            <Button variant="contained" color="secondary"
+                            <Button id="buttonConfig" variant="contained" color="secondary"
                                 onClick={props.handleReset}>
                                 Cancelar
                             </Button>
@@ -196,9 +192,6 @@ export default class BooksReferences extends Component {
                         <td> {book.authorName}. <span className="font-weight-bold">{book.book}</span>. {book.publisher}: {book.local}, {book.year}.
                     </td>
                         <td>
-                            {/* <button className="bt btn-warning mr-1" onClick={() => this.load(book)}>
-                                <i className="fa fa-pencil"></i>
-                            </button> */}
                             <Button variant="contained" color="secondary" onClick={() => this.remove(book)}>
                                 <i className="fa fa-trash"></i>
                             </Button>

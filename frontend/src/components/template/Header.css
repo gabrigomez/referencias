@@ -13,5 +13,6 @@ header.header h3 {
 }
 
 header.header h3 a {
-    text-decoration: none;    
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.822)    
 }
