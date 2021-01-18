@@ -1,15 +1,17 @@
 aside.logo {
     display: flex;
     justify-content: center;
-    align-items: center;
-    font-size: 1.5em;
-    
-    
+    align-items: center;    
 }
 
 aside.logo a {
     text-decoration: none;
-    color: rgba(17, 17, 17, 0.582);    
+    color: rgba(17, 17, 17, 0.582);      
+}
+h1.home {
+    font-size: 3.0rem;
+    font-weight: bold;
+    text-shadow: 1px 1px rgba(189, 189, 189, 0.507); 
     
 }
 

@@ -8,7 +8,6 @@ import * as yup from 'yup'
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css'; 
 
-
 import Button from '@material-ui/core/Button';
 
 
@@ -22,6 +21,7 @@ const initialState = {
 
 export default class BooksReferences extends Component {
     state = { ...initialState }
+    
 
     constructor(props) {
         super(props)
@@ -78,6 +78,7 @@ export default class BooksReferences extends Component {
     }
     
     toastedSuccess = () => toast.success('Referência gerada com sucesso!')
+    
 
     renderForm() {
         const booksSchemas = yup.object().shape({
@@ -153,13 +154,14 @@ export default class BooksReferences extends Component {
                                 <div id="error" className="text-danger mb-2">{props.errors.year}</div>
                             ) : null}
 
-                            <button type="submit" className="btn-primary mt-3 mb-3 ml-5">
+                            <Button variant="contained" type="submit" color="primary">
                                 Salvar
-                            </button>
-                            <button className="btn-danger mt-3 mb-3 ml-3 mr-5" 
+                            </Button>
+                            <Button variant="contained" color="secondary"
                                 onClick={props.handleReset}>
                                 Cancelar
-                            </button>
+                            </Button>
+                            
                         <ToastContainer />
                         </Form>
                         

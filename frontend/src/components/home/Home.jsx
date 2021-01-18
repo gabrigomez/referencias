@@ -9,7 +9,7 @@ export default props =>
         </h5>
         <div>
         <a className="btn-primary mt-3" href="https://www.ufpe.br/documents/40070/1837975/ABNT+NBR+6023+2018+%281%29.pdf/3021f721-5be8-4e6d-951b-fa354dc490ed"> 
-                Clique aqui para acessar na íntegra o documento
+                Clique aqui para acessar o documento na íntegra
             </a>      
         </div>
     </Main>

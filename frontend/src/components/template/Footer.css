@@ -4,6 +4,7 @@ footer.footer {
     justify-content: center;
     background-color: rgba(128, 128, 128, 0.466);
     padding: 25px;
+    text-shadow: 1px 1px rgba(189, 189, 189, 0.507); 
 }
 
 p {

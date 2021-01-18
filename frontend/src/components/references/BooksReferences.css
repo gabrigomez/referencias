@@ -12,3 +12,10 @@ input[type="text"]::placeholder {
     opacity: 1;
 }
 
+.MuiButtonBase-root.MuiButton-root.MuiButton-contained {
+    margin-right: 10px;
+    margin-top: 20px;
+    margin-left: 10px;
+   
+}
+
